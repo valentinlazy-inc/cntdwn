@@ -1,1 +1,1 @@
-web: npm start
+web: ./backend/bin/www
