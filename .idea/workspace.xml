@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b89e210-016b-4f9d-b65a-654f7acd26d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Procfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Procfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static.json" beforeDir="false" afterPath="$PROJECT_DIR$/static.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/Timer.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -44,6 +43,15 @@
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -81,6 +89,7 @@
         <option value="$PROJECT_DIR$/backend/Procfile" />
         <option value="$PROJECT_DIR$/frontend/static.json" />
         <option value="$PROJECT_DIR$/frontend/Procfile" />
+        <option value="$PROJECT_DIR$/static.json" />
       </list>
     </option>
   </component>
@@ -110,48 +119,7 @@
             <path>
               <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
               <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Loading" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cntdwn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cntdwn" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -168,6 +136,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
     </key>
   </component>
@@ -193,12 +162,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570019992808</updated>
-      <workItem from="1570019993954" duration="6075000" />
+      <workItem from="1570019993954" duration="6316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6075000" />
+    <option name="totallyTimeSpent" value="6316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="954" extended-state="0" />
@@ -341,13 +310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/static.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -362,6 +324,13 @@
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
