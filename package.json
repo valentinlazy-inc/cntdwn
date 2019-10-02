@@ -8,6 +8,10 @@
     "start": "node ./backend/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "frontend/node_modules"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
