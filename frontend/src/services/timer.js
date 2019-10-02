@@ -1,7 +1,7 @@
 import { API_URL } from '../config';
 
 export function post(data) {
-  return fetch(`${API_URL}/timers`, {
+  return fetch(`${API_URL}/api/timers`, {
     method: 'POST',
     body: JSON.stringify(data),
     mode: 'cors',
@@ -14,6 +14,6 @@ export function post(data) {
 }
 
 export function get(id) {
-  return fetch(`${API_URL}/timers/${id}`)
+  return fetch(`${API_URL}/api/timers/${id}`)
     .then(response => response.json());
 }
