@@ -16,7 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.use('/', indexRouter);
-app.use('/timers', timersRouter);
+app.use('/api/timers', timersRouter);
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+});
 
 module.exports = app;
