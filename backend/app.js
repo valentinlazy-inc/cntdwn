@@ -4,8 +4,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const indexRouter = require('./routes/index');
 const timersRouter = require('./routes/timers');
+const pushesRouter = require('./routes/pushes');
 
 const app = express();
 
@@ -17,6 +17,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.use('/api/timers', timersRouter);
+app.use('/api/pushes', pushesRouter);
+
 app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });

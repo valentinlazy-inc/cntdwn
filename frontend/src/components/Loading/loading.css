@@ -1,5 +1,5 @@
 
-svg {
+svg.loading {
     height: 200px;
     max-width: 25em;
     border-radius: 3px;
@@ -10,7 +10,7 @@ svg {
     stroke-width: 8%;
 }
 
-use {
+svg.loading use {
     stroke: #fff;
     animation: a 2s linear infinite;
 }
