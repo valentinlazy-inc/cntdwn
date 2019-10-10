@@ -13,12 +13,16 @@ import { get } from './services/timer';
 function Timer({ firebase }) {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [completed, setCompleted] = useState(false);
   
   useEffect(() => {
     async function load() {
       const timer = await get(id);
       console.log(timer);
       setData(timer);
+      if (timer.datetime < Date.now()) {
+        setCompleted(true);
+      }
     }
   
     const saveToken = async () => {
@@ -40,8 +44,10 @@ function Timer({ firebase }) {
   return (
     <Grid container justify="center" alignItems="center" direction="column" spacing={4}>
       <Typography component="p">{data.note}</Typography>
+      {completed && <Typography component="p" color="error">{data.finish_message}</Typography>}
       <Countdown
         date={new Date(data.datetime)}
+        onComplete={() => setCompleted(true)}
         renderer={({ days, hours, minutes, seconds }) => (
           <div className="timer">
             <div>

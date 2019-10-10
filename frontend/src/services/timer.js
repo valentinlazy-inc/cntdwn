@@ -8,7 +8,7 @@ export async function post(data) {
     const timer = await Firebase.saveTimer(data);
     const { url } = await fetch(`${API_URL}/api/timers`, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(timer),
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json'

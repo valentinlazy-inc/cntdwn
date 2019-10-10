@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
 /* POST save timer . */
 router.post('/', async function(req, res, next) {
   const timer = {
-    id: Date.now(),
+    // id: Date.now(),
     ...req.body,
   };
   
