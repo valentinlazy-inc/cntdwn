@@ -17,6 +17,7 @@ function Timer({ firebase }) {
   useEffect(() => {
     async function load() {
       const timer = await get(id);
+      console.log(timer);
       setData(timer);
     }
   
@@ -24,8 +25,12 @@ function Timer({ firebase }) {
       const token = await firebase.askForPermissioToReceiveNotifications();
       await subscribeToTimer(token, id);
     };
-    load();
-    saveToken();
+    try {
+      load();
+      saveToken();
+    } catch (err) {
+      console.error(err);
+    }
   }, [id]);
   
   if (!data) {

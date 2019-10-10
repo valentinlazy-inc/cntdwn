@@ -3,6 +3,9 @@ const router = express.Router();
 require('dotenv').config();
 const request = require('request');
 
+const { BitlyClient } = require('bitly');
+const bitly = new BitlyClient(process.env.BITLY_API_KEY);
+
 const timers = {};
 
 /* GET timer by id. */
@@ -14,12 +17,15 @@ router.get('/:id', function(req, res, next) {
   }
 });
 /* POST save timer . */
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
   const timer = {
     id: Date.now(),
     ...req.body,
   };
   
+  const URL = `${process.env.FRONTEND_URL}/t/${timer.id}`;
+  
+  console.log(URL);
   try {
     const endDate = new Date(timer.datetime);
     setTimeout(function() {
@@ -33,7 +39,7 @@ router.post('/', function(req, res, next) {
           "notification": {
             "title": "cntdwn",
             "body": timer.finish_message || 'TIME IS OVER',
-            "click_action": `${process.env.FRONTEND_URL}/t/${timer.id}`
+            "click_action": URL,
           },
           "to": `/topics/${timer.id}`
         }),
@@ -46,7 +52,18 @@ router.post('/', function(req, res, next) {
     console.error(err);
   }
   
-  res.json(timer);
+  try {
+    const response = await bitly.shorten(URL);
+
+    res.json({
+      ...timer,
+      url: response.url,
+    });
+  } catch (err) {
+    console.error(err);
+    res.json({});
+  }
+
   timers[timer.id] = timer;
 });
 

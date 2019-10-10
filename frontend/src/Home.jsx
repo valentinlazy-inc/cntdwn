@@ -25,7 +25,8 @@ function Home() {
       );
     
     const timer = await post(data);
-    setURL(`${window.location.protocol}//${window.location.host}/t/${timer.id}`);
+    const url = timer.url || `${window.location.protocol}//${window.location.host}/t/${timer.id}`;
+    setURL(url);
   };
   
   return (

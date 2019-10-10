@@ -10,7 +10,7 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     try {
-      navigator.serviceWorker
+      this.workerPromise = navigator.serviceWorker
         .register('/firebase-messaging-sw.js')
         .then((registration) => {
           app.messaging().useServiceWorker(registration);
@@ -24,8 +24,11 @@ class Firebase {
   }
   async askForPermissioToReceiveNotifications() {
     try {
+      await this.workerPromise.then(() => {});
       const messaging = app.messaging();
-      await messaging.requestPermission();
+      if (Notification.permission === 'default') {
+        await messaging.requestPermission();
+      }
 
       return await messaging.getToken();
     } catch (error) {
@@ -33,10 +36,12 @@ class Firebase {
     }
   }
   async getTimer(id) {
+    await this.workerPromise.then(() => {});
     const timer = await app.database().ref('/timers/' + id).once('value');
     return timer.val();
   }
-  saveTimer(data) {
+  async saveTimer(data) {
+    await this.workerPromise.then(() => {});
     const id = app.database().ref().child('posts').push().key;
     return app.database().ref('timers/' + id).set(data).then(() => ({ ...data, id }));
   }
