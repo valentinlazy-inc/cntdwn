@@ -35,7 +35,7 @@ function App({ firebase }) {
             />
           </Grid>
           <Switch>
-            <Route path="/timer/:id" exact>
+            <Route path="/t/:id" exact>
               <Timer />
             </Route>
             <Route path="/" exact>

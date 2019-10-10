@@ -18,13 +18,14 @@ function Home() {
     e.preventDefault();
     const { target: { elements } } = e;
     const data = Array.from(elements)
+      .filter(e => e.name)
       .reduce((acc, element) =>
           ({ [element.name]: element.value, ...acc }),
-        { datetime },
+        { datetime: datetime.getTime() },
       );
     
     const timer = await post(data);
-    setURL(`${window.location.protocol}//${window.location.host}/timer/${timer.id}`);
+    setURL(`${window.location.protocol}//${window.location.host}/t/${timer.id}`);
   };
   
   return (

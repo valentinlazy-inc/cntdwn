@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
           "notification": {
             "title": "cntdwn",
             "body": timer.finish_message || 'TIME IS OVER',
-            "click_action": `${process.env.FRONTEND_URL}/timer/${timer.id}`
+            "click_action": `${process.env.FRONTEND_URL}/t/${timer.id}`
           },
           "to": `/topics/${timer.id}`
         }),
