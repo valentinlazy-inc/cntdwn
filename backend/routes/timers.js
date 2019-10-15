@@ -22,7 +22,6 @@ router.post('/', async function(req, res, next) {
     const endDate = new Date(timer.datetime);
     
     workQueue.add(
-      timer.id,
       {
         "notification": {
           "title": "cntdwn",

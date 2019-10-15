@@ -25,5 +25,8 @@
     "morgan": "~1.9.1",
     "request": "^2.88.0",
     "throng": "^4.0.0"
+  },
+  "devDependencies": {
+    "bull-board": "^0.4.0"
   }
 }
