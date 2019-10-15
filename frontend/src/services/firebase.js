@@ -26,9 +26,7 @@ class Firebase {
     try {
       await this.workerPromise.then(() => {});
       const messaging = app.messaging();
-      if (Notification.permission === 'default') {
-        await messaging.requestPermission();
-      }
+      await messaging.requestPermission();
 
       return await messaging.getToken();
     } catch (error) {
