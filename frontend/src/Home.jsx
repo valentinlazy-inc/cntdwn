@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
+import ShareIcon from '@material-ui/icons/Share';
 
 import { post } from './services/timer';
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 function Home() {
   const [url, setURL] = useState('');
+  const [timer, setTimer] = useState({});
   const [datetime, setDatetime] = useState(moment().add(5, 'minutes').toDate());
   const classes = useStyles();
   
@@ -33,6 +35,7 @@ function Home() {
       );
     
     const timer = await post(data);
+    setTimer(timer);
     const url = timer.url || `${window.location.protocol}//${window.location.host}/t/${timer.id}`;
     setURL(url);
   };
@@ -92,8 +95,35 @@ function Home() {
         {url &&
         <Grid item className={classes.padding}>
           <Typography color="primary">
-            your timer created. you can share it then. <br/>
-            URL: <Link href={url}>{url}</Link>
+            your timer created. <br/>
+            <Link href={url} onClick={(e) => {
+              e.preventDefault();
+              try {
+                const el = document.createElement('input');
+                el.value = url;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+              } catch (err) {
+                console.error(err);
+              }
+              window.location.href = url;
+            }}>{url}</Link>
+  
+            {navigator.share &&
+            <ShareIcon
+              onClick={() => {
+                navigator.share({
+                  title: 'Timer',
+                  text: timer.note,
+                  url: url,
+                })
+                  .then(() => console.log('Successful share'))
+                  .catch((error) => console.log('Error sharing', error));
+              }}
+            />
+            }
           </Typography>
         </Grid>
         }
