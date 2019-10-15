@@ -11,7 +11,7 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     try {
       this.workerPromise = navigator.serviceWorker
-        .register('/firebase-messaging-sw.js')
+        .register('/firebase-sw.js')
         .then((registration) => {
           app.messaging().useServiceWorker(registration);
         });
@@ -22,7 +22,7 @@ class Firebase {
   analytics() {
     app.analytics();
   }
-  async askForPermissioToReceiveNotifications() {
+  async askForPermissionToReceiveNotifications() {
     try {
       await this.workerPromise.then(() => {});
       const messaging = app.messaging();

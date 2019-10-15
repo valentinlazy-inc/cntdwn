@@ -26,7 +26,7 @@ function Timer({ firebase }) {
     }
   
     const saveToken = async () => {
-      const token = await firebase.askForPermissioToReceiveNotifications();
+      const token = await firebase.askForPermissionToReceiveNotifications();
       await subscribeToTimer(token, id);
     };
     try {
