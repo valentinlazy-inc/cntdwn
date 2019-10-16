@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 function Home() {
   const [url, setURL] = useState('');
   const [timer, setTimer] = useState({});
-  const [datetime, setDatetime] = useState(moment().add(5, 'minutes').toDate());
+  const [datetime, setDatetime] = useState(moment().add(5, 'minutes'));
   const classes = useStyles();
   
   const handleSubmit = async (e) => {
@@ -31,7 +31,7 @@ function Home() {
       .filter(e => e.name)
       .reduce((acc, element) =>
           ({ [element.name]: element.value, ...acc }),
-        { datetime: datetime._isAMomentObject ? +datetime.format('x'): datetime.getTime() },
+        { datetime: +datetime.utc().format('x') },
       );
     
     const timer = await post(data);

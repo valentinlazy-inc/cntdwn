@@ -33,7 +33,7 @@ router.post('/', async function(req, res, next) {
       {
         attempts: 1,
         delay: endDate.getTime() - Date.now() - 500,
-        removeOnComplete: true,
+        removeOnComplete: false,
       },
     );
     
