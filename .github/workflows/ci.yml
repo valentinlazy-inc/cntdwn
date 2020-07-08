@@ -7,8 +7,7 @@ on:
     tags:
       - '!*' # Do not execute on tags
   pull_request:
-    paths:
-      - '!*.MD'
+
 jobs:
   test_front:
     name: test frontend
@@ -37,9 +36,9 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
-      - run: npm run build
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: npm run coverage
+          prefix: frontend
