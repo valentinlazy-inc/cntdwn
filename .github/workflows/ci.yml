@@ -71,7 +71,7 @@ jobs:
           chmod +x test-reporter-0.7.0-linux-amd64
           ./test-reporter-0.7.0-linux-amd64 before-build
           npm run coverage
-          ./test-reporter-0.7.0-linux-amd64 after-build
+          ./test-reporter-0.7.0-linux-amd64 after-build -t lcov --prefix ./coverage -d
 
 #      - uses: paambaati/codeclimate-action@v2.6.0
 #        env:
