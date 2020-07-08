@@ -1,12 +1,11 @@
 name: build
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     tags:
       - '!*' # Do not execute on tags
-    paths:
-      - frontend/*
   pull_request:
     paths:
       - '!*.MD'
