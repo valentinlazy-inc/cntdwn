@@ -40,6 +40,6 @@ jobs:
       - run: npm run build
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
-          CC_TEST_REPORTER_ID: 8ca44da13bfaf12d967b12200f52ab0e978c6f5a80b4f8a205e33d3d9a30dfd4
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: npm run coverage
