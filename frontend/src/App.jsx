@@ -18,9 +18,9 @@ function App({ firebase }) {
   useEffect(() => {
     firebase.analytics();
   }, []);
-  
+
   const [theme, setTheme] = useState(blackTheme);
-  
+
   return (
     <Router>
       <MuiThemeProvider theme={theme}>
@@ -28,10 +28,12 @@ function App({ firebase }) {
           <CssBaseline />
           <Grid container justify="flex-end" alignItems="center">
             <Typography color="primary">
-              {theme === whiteTheme ? 'black': 'white'}
+              {theme === whiteTheme ? 'black' : 'white'}
             </Typography>
             <SwitchControl
-              onChange={() => setTheme(theme === whiteTheme ? blackTheme : whiteTheme)}
+              onChange={() =>
+                setTheme(theme === whiteTheme ? blackTheme : whiteTheme)
+              }
             />
           </Grid>
           <Switch>

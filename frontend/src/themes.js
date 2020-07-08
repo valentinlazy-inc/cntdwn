@@ -7,13 +7,13 @@ export const whiteTheme = createMuiTheme({
       light: '#ccc',
       main: '#000',
       dark: '#000',
-      contrastText: '#fff',
+      contrastText: '#fff'
     },
     secondary: grey,
     background: {
-      default: '#fff',
-    },
-  },
+      default: '#fff'
+    }
+  }
 });
 
 export const blackTheme = createMuiTheme({
@@ -23,18 +23,18 @@ export const blackTheme = createMuiTheme({
       light: '#fff',
       main: '#fff',
       dark: '#fff',
-      contrastText: '#000',
+      contrastText: '#000'
     },
     secondary: grey,
     background: {
       paper: '#000',
-      default: '#000',
+      default: '#000'
     },
     text: {
       primary: 'rgba(255, 255, 255, 1)',
       secondary: 'rgba(255, 255, 255, 0.9)',
       disabled: 'rgba(255, 255, 255, 0.8)',
-      hint: 'rgba(255, 255, 255, 0.85)',
+      hint: 'rgba(255, 255, 255, 0.85)'
     },
     action: {
       active: 'rgba(255, 255, 255, 0.5)',
@@ -42,7 +42,7 @@ export const blackTheme = createMuiTheme({
       hoverOpacity: 0.38,
       selected: 'rgba(255, 255, 255, 0.94)',
       disabled: 'rgba(255, 255, 255, 0.76)',
-      disabledBackground: 'rgba(255, 255, 255, 0.62)',
-    },
-  },
+      disabledBackground: 'rgba(255, 255, 255, 0.62)'
+    }
+  }
 });

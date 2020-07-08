@@ -14,7 +14,7 @@ function Timer({ firebase }) {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [completed, setCompleted] = useState(false);
-  
+
   useEffect(() => {
     async function load() {
       const timer = await get(id);
@@ -24,7 +24,7 @@ function Timer({ firebase }) {
         setCompleted(true);
       }
     }
-  
+
     const saveToken = async () => {
       const token = await firebase.askForPermissionToReceiveNotifications();
       await subscribeToTimer(token, id);
@@ -36,42 +36,48 @@ function Timer({ firebase }) {
       console.error(err);
     }
   }, [id]);
-  
+
   if (!data) {
-    return <Grid container justify="center"><Loading /></Grid>;
+    return (
+      <Grid container justify="center">
+        <Loading />
+      </Grid>
+    );
   }
-  
+
   return (
-    <Grid container justify="center" alignItems="center" direction="column" spacing={4}>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      direction="column"
+      spacing={4}
+    >
       <Typography component="p">{data.note}</Typography>
-      {completed && <Typography component="p" color="error">{data.finish_message}</Typography>}
+      {completed && (
+        <Typography component="p" color="error">
+          {data.finish_message}
+        </Typography>
+      )}
       <Countdown
         date={new Date(data.datetime)}
         onComplete={() => setCompleted(true)}
         renderer={({ days, hours, minutes, seconds }) => (
           <div className="timer">
             <div>
-              <span>
-                {days}
-              </span>
+              <span>{days}</span>
               <span className="help-title">days</span>
             </div>
             <div>
-              <span>
-                {zeroPad(hours, 2)}
-              </span>
+              <span>{zeroPad(hours, 2)}</span>
               <span className="help-title">hours</span>
             </div>
             <div>
-              <span>
-                {zeroPad(minutes, 2)}
-              </span>
+              <span>{zeroPad(minutes, 2)}</span>
               <span className="help-title">minutes</span>
             </div>
             <div>
-              <span>
-                {zeroPad(seconds, 2)}
-              </span>
+              <span>{zeroPad(seconds, 2)}</span>
               <span className="help-title">seconds</span>
             </div>
           </div>
