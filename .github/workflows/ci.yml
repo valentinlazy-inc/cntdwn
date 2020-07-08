@@ -41,5 +41,4 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: npm run coverage
-          prefix: ${{ github.workspace }}/frontend
-          debug: true
+          prefix: ./frontend
