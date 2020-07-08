@@ -67,12 +67,11 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
-          wget -o test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
-          chmod +x test-reporter
-          ./test-reporter before-build
+          curl -OL https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
+          chmod +x test-reporter-0.7.0-linux-amd64
+          ./test-reporter-0.7.0-linux-amd64 before-build
           npm run coverage
-          cd coverage
-          ./test-reporter after-build -t lcov --exit-code $?
+          ../test-reporter-0.7.0-linux-amd64 after-build
 
 #      - uses: paambaati/codeclimate-action@v2.6.0
 #        env:
