@@ -10,14 +10,15 @@ on:
     paths:
       - '!*.MD'
 jobs:
-  test:
-    name: test
+  test_front:
+    name: test frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
           node-version: '12'
+      - run: cd frontend
       - run: npm install
       - run: npm run build
       - run: npm test
@@ -30,6 +31,7 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '12'
+      - run: cd frontend
       - run: npm install
       - run: npm run build
       - uses: paambaati/codeclimate-action@v2.2.4
