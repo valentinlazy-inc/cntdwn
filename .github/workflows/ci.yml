@@ -62,13 +62,25 @@ jobs:
       - name: Install deps
         if: steps.node_cache.outputs.cache-hit != 'true'
         run: npm install
-      - uses: paambaati/codeclimate-action@v2.6.0
+
+      - name: CodeClimate
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          COMMITTED_AT: ${{ github.event.pull_request.updated_at }}
-        with:
-          coverageCommand: yarn --cwd frontend coverage
-          prefix: ${{ github.workspace }}/frontend/coverage
-          debug: true
-          coverageLocations: |
-            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
+        run: |
+          cd frontend
+          wget -o test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
+          ./test-reporter before-build
+          npm run coverage
+          cd coverage
+          ./test-reporter after-build -t lcov --exit-code $?
+
+#      - uses: paambaati/codeclimate-action@v2.6.0
+#        env:
+#          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+#          GITHUB_COMMITTED_AT: ${{ github.event.pull_request.updated_at }}
+#        with:
+#          coverageCommand: yarn --cwd frontend coverage
+#          prefix: ${{ github.workspace }}/frontend/coverage
+#          debug: true
+#          coverageLocations: |
+#            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
