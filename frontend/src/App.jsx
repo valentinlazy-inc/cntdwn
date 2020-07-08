@@ -17,7 +17,7 @@ import { blackTheme, whiteTheme } from './themes';
 function App({ firebase }) {
   useEffect(() => {
     firebase.analytics();
-  }, []);
+  }, [firebase]);
 
   const [theme, setTheme] = useState(blackTheme);
 

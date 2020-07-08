@@ -18,7 +18,6 @@ function Timer({ firebase }) {
   useEffect(() => {
     async function load() {
       const timer = await get(id);
-      console.log(timer);
       setData(timer);
       if (timer.datetime < Date.now()) {
         setCompleted(true);
@@ -35,7 +34,7 @@ function Timer({ firebase }) {
     } catch (err) {
       console.error(err);
     }
-  }, [id]);
+  }, [id, firebase]);
 
   if (!data) {
     return (

@@ -12,17 +12,13 @@ on:
       - '!*.MD'
 jobs:
   test:
-    strategy:
-      matrix:
-        platform: [ ubuntu-latest ]
-        node: [ '12', '14' ]
-    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
-    runs-on: ${{ matrix.platform }}
+    name: test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '12'
       - run: npm install
       - run: npm run build
       - run: npm test
