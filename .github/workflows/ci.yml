@@ -68,7 +68,7 @@ jobs:
           COMMITTED_AT: ${{ github.event.pull_request.updated_at }}
         with:
           coverageCommand: yarn --cwd frontend coverage
-          prefix: ${{ github.workspace }}/frontend
+          prefix: ${{ github.workspace }}/frontend/coverage
           debug: true
           coverageLocations: |
             ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
