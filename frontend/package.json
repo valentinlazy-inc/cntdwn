@@ -25,7 +25,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "nyc --reporter=lcov npm run test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +44,13 @@
   "prettier": {
     "semi": true,
     "singleQuote": true
+  },
+  "jest": {
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "html",
+      "lcov"
+    ]
   },
   "browserslist": {
     "production": [
