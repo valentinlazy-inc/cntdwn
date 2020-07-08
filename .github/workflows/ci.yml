@@ -9,30 +9,30 @@ on:
   pull_request:
 
 jobs:
-#  test_front:
-#    name: test frontend
-#    runs-on: ubuntu-latest
-#    defaults:
-#      run:
-#        working-directory: frontend
-#    steps:
-#      - uses: actions/checkout@master
-#        with:
-#          ref: ${{ github.event.pull_request.head.sha }}
-#      - uses: actions/setup-node@master
-#        with:
-#          node-version: '12'
-#      - uses: actions/cache@v2
-#        with:
-#          path: ~/.npm
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-
-#      - run: npm install
-#      - run: npm run build
-#      - run: npm test
+  test_front:
+    name: test frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@master
+        with:
+          node-version: '12'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run build
+      - run: npm test
   coverage:
-#    needs: [ test_front ]
+    needs: [ test_front ]
     name: coverage
     runs-on: ubuntu-latest
     defaults:
@@ -56,6 +56,6 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: pwd
+          coverageCommand: yarn --cwd frontend coverage
           prefix: ${{ github.workspace }}/frontend
           debug: true
