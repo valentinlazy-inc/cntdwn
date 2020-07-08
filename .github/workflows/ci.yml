@@ -20,6 +20,12 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '12'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm install
       - run: npm run build
       - run: npm test
@@ -35,11 +41,17 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '12'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm install
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: cd frontend && npm run coverage
+          coverageCommand: pwd
           prefix: ${{ github.workspace }}/frontend
           debug: true
