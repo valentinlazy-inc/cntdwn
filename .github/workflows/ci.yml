@@ -68,6 +68,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
           wget -o test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
+          chmod +x test-reporter
           ./test-reporter before-build
           npm run coverage
           cd coverage
