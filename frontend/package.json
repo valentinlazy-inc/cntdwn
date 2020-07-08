@@ -46,7 +46,6 @@
     "singleQuote": true
   },
   "jest": {
-    "coverageDirectory": "coverage",
     "coverageReporters": [
       "html",
       "lcov"
