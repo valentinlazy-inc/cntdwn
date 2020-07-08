@@ -7,8 +7,7 @@ on:
     tags:
       - '!*' # Do not execute on tags
   pull_request:
-    paths:
-      - '!*.MD'
+
 jobs:
   test_front:
     name: test frontend
@@ -18,10 +17,23 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@master
         with:
           node-version: '12'
-      - run: npm install
+      - uses: actions/cache@v2
+        id: node_cache
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install deps
+        if: steps.node_cache.outputs.cache-hit != 'true'
+        run: npm install
       - run: npm run build
       - run: npm test
   coverage:
@@ -33,13 +45,30 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@master
         with:
           node-version: '12'
-      - run: npm install
-      - run: npm run build
+      - uses: actions/cache@v2
+        id: node_cache
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install deps
+        if: steps.node_cache.outputs.cache-hit != 'true'
+        run: npm install
+
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
-          CC_TEST_REPORTER_ID: 8ca44da13bfaf12d967b12200f52ab0e978c6f5a80b4f8a205e33d3d9a30dfd4
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: npm run coverage
+          coverageCommand: yarn --cwd frontend test --collectCoverage
+          prefix: ${{ github.workspace }}/frontend/coverage
+          debug: true
+          coverageLocations: |
+            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov

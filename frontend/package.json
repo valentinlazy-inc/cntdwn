@@ -1,6 +1,6 @@
 {
   "name": "cntdwn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@date-io/moment": "^1.3.11",
@@ -25,7 +25,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "nyc --reporter=lcov npm run test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +44,12 @@
   "prettier": {
     "semi": true,
     "singleQuote": true
+  },
+  "jest": {
+    "coverageReporters": [
+      "html",
+      "lcov"
+    ]
   },
   "browserslist": {
     "production": [
