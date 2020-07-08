@@ -63,16 +63,6 @@ jobs:
         if: steps.node_cache.outputs.cache-hit != 'true'
         run: npm install
 
-#      - name: CodeClimate
-#        env:
-#          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-#        run: |
-#          curl -OL https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
-#          chmod +x test-reporter-0.7.0-linux-amd64
-#          ./test-reporter-0.7.0-linux-amd64 before-build
-#          npm test -- --collectCoverage
-#          ./test-reporter-0.7.0-linux-amd64 after-build -t lcov -d
-
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
