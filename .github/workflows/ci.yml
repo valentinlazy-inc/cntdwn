@@ -25,7 +25,9 @@ jobs:
       - uses: actions/cache@v2
         id: node_cache
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            **/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -51,7 +53,9 @@ jobs:
       - uses: actions/cache@v2
         id: node_cache
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            **/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -65,3 +69,5 @@ jobs:
           coverageCommand: yarn --cwd frontend coverage
           prefix: ${{ github.workspace }}/frontend
           debug: true
+          coverageLocations: |
+            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
