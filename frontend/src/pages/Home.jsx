@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
-import CopyLink from './components/CopyLink/CopyLink';
-import ShareButton from './components/ShareButton/ShareButton';
+import CopyLink from '../components/CopyLink/CopyLink';
+import ShareButton from '../components/ShareButton/ShareButton';
 
-import { post } from './services/timer';
+import { post } from '../services/timer';
 
 const useStyles = makeStyles(theme => ({
   padding: {
