@@ -23,12 +23,15 @@ jobs:
         with:
           node-version: '12'
       - uses: actions/cache@v2
+        id: node_cache
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm install
+      - name: Install deps
+        if: steps.node_cache.outputs.cache-hit != 'true'
+        run: npm install
       - run: npm run build
       - run: npm test
   coverage:
@@ -46,12 +49,15 @@ jobs:
         with:
           node-version: '12'
       - uses: actions/cache@v2
+        id: node_cache
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm install
+      - name: Install deps
+        if: steps.node_cache.outputs.cache-hit != 'true'
+        run: npm install
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
