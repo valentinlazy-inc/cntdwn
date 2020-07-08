@@ -63,23 +63,22 @@ jobs:
         if: steps.node_cache.outputs.cache-hit != 'true'
         run: npm install
 
-      - name: CodeClimate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          curl -OL https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
-          chmod +x test-reporter-0.7.0-linux-amd64
-          ./test-reporter-0.7.0-linux-amd64 before-build
-          npm test -- --collectCoverage
-          ./test-reporter-0.7.0-linux-amd64 after-build -t lcov -d
-
-#      - uses: paambaati/codeclimate-action@v2.6.0
+#      - name: CodeClimate
 #        env:
 #          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-#          GITHUB_COMMITTED_AT: ${{ github.event.pull_request.updated_at }}
-#        with:
-#          coverageCommand: yarn --cwd frontend coverage
-#          prefix: ${{ github.workspace }}/frontend/coverage
-#          debug: true
-#          coverageLocations: |
-#            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
+#        run: |
+#          curl -OL https://codeclimate.com/downloads/test-reporter/test-reporter-0.7.0-linux-amd64
+#          chmod +x test-reporter-0.7.0-linux-amd64
+#          ./test-reporter-0.7.0-linux-amd64 before-build
+#          npm test -- --collectCoverage
+#          ./test-reporter-0.7.0-linux-amd64 after-build -t lcov -d
+
+      - uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: yarn --cwd frontend coverage
+          prefix: ${{ github.workspace }}/frontend/coverage
+          debug: true
+          coverageLocations: |
+            ${{ github.workspace }}/frontend/coverage/lcov.info:lcov
