@@ -17,6 +17,8 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@master
         with:
           node-version: '12'
@@ -38,6 +40,8 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@master
         with:
           node-version: '12'
@@ -52,6 +56,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: pwd
           prefix: ${{ github.workspace }}/frontend
           debug: true
