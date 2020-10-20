@@ -16,10 +16,10 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
       - uses: actions/cache@v2
@@ -44,10 +44,10 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
       - uses: actions/cache@v2
