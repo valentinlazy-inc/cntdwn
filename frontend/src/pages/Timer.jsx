@@ -50,7 +50,6 @@ function Timer({ firebase }) {
       justify="center"
       alignItems="center"
       direction="column"
-      spacing={4}
     >
       <Typography component="p">{data.note}</Typography>
       {completed && (
